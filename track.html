@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Track Order or Booking · Vipra's Boutique</title>
+<meta name="theme-color" content="#1d070b">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.tk{display:grid;grid-template-columns:1fr 1fr;gap:60px;padding:160px 0 120px;align-items:start}
+.tk form{display:flex;gap:10px;margin-top:30px}
+.tk form input{flex:1;height:58px;border:1px solid var(--line);border-radius:999px;padding:0 24px;font-size:18px;background:#fff;text-transform:uppercase;outline:0;font-family:var(--serif)}
+.tk form input:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(184,137,59,.14)}
+.samples{margin-top:14px;font-size:13px;color:var(--mute)}
+.samples button{color:var(--maroon);font-weight:700;text-decoration:underline;margin:0 4px}
+.card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:34px;min-height:420px}
+.card .hdr{display:flex;justify-content:space-between;gap:16px;align-items:start;border-bottom:1px solid var(--line);padding-bottom:20px}
+.card .hdr b{font-family:var(--serif);font-size:34px;font-weight:500;color:var(--maroon);display:block;line-height:1}
+.card .hdr small{color:var(--mute);font-size:13px}
+.pillst{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:7px 12px;border-radius:999px;background:rgba(184,137,59,.14);color:var(--gold);white-space:nowrap}
+.pillst.g{background:rgba(47,107,79,.12);color:#2f6b4f}.pillst.r{background:rgba(200,48,44,.1);color:var(--red)}
+.bar{height:6px;border-radius:6px;background:var(--sand);margin:22px 0 4px;overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--maroon),var(--gold));border-radius:6px;width:0}
+.its{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.its img{width:54px;height:68px;object-fit:cover;border-radius:8px}
+.ph-empty{display:grid;place-items:center;text-align:center;min-height:360px;color:var(--mute)}
+.ph-empty svg{width:120px;height:120px;stroke:var(--gold);fill:none;stroke-width:.8;margin:0 auto 18px}
+.recent{margin-top:44px}
+.recent h6{font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px}
+.recent button{display:flex;justify-content:space-between;width:100%;padding:14px 0;border-bottom:1px solid var(--line);font-size:14px;text-align:left}
+.recent button:hover{color:var(--maroon)}
+.acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+@media (max-width:980px){.tk{grid-template-columns:1fr;padding-top:120px;gap:40px}.card{padding:24px}}
+</style>
+</head>
+<body data-page="track" class="no-js">
+<script>document.body.classList.remove('no-js')</script>
+<main class="wrap tk">
+ <div>
+  <div class="crumbs" style="font-size:12px;color:var(--mute);margin-bottom:22px"><a href="index.html">Home</a> / Track</div>
+  <h1 class="h1" data-split="now">Track your<br><em>order.</em></h1>
+  <p class="lead" style="margin-top:20px" data-fade=".4">Enter an order ID (VB-…) or an appointment ID (VA-…) from your WhatsApp confirmation to see live status.</p>
+  <form id="tf" data-fade=".5"><input id="tid" placeholder="VB-24817" required aria-label="Order or booking ID"><button class="btn btn-dark" type="submit">Track</button></form>
+  <div class="samples" data-fade=".55">Try a sample: <button data-sample="VB-24817">VB-24817</button><button data-sample="VA-3108">VA-3108</button></div>
+  <div class="recent" id="recent"></div>
+ </div>
+ <div class="card" id="res"><div class="ph-empty"><div><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="38" stroke-dasharray="2 4"/><path d="M28 40h28v22H28zM56 48h10l7 7v7H56z"/><circle cx="38" cy="66" r="4"/><circle cx="64" cy="66" r="4"/></svg><p class="serif" style="font-size:24px">Your order's journey<br>will appear here.</p></div></div></div>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/site.js"></script>
+<script>
+const U=new URLSearchParams(location.search);
+const dt=(t,n)=>new Date(t+n*864e5).toLocaleDateString('en-IN',{day:'numeric',month:'short'});
+function order(id){const O=LS.g('vb_orders',{});let o=O[id];
+ if(id=='VB-24817')o={t:Date.now()-3.2*864e5,tot:5340,items:[{id:2,q:1,s:'M'},{id:4,q:1,s:''}],dm:'Pune delivery',n:'Sample customer'};
+ if(!o)return null;const days=(Date.now()-o.t)/864e5,stage=days<.02?1:days<1?2:days<4?3:days<6?4:5;
+ const S=['Order confirmed','Measurements & fabric checked','Stitching in progress','Trial & quality check',o.dm=='Pickup'?'Ready for pickup':'Out for delivery'];
+ return `<div class="hdr"><div><small>Order</small><b>${id}</b><small>${o.items.length} item(s) · ${rs(o.tot)} · ${o.dm}</small></div><span class="pillst ${stage>=5?'g':''}">${S[Math.min(stage,4)]}</span></div>
+ <div class="bar"><i style="--w:${Math.min(100,stage/5*100)}%"></i></div><small style="color:var(--mute)">Estimated ready by <b>${dt(o.t,6)}</b></small>
+ <div class="its">${o.items.map(x=>`<img src="img/${byId(x.id).i[0]}.webp" alt="${byId(x.id).n}" title="${byId(x.id).n}">`).join('')}</div>
+ <div class="tl">${S.map((s,i)=>`<div class="st ${i<stage?'done':i==stage?'now':''}"><span class="dot">${i<stage?'✓':''}</span><div><b>${s}</b><small>${i<stage?'Done · '+dt(o.t,i*1.2):i==stage?'In progress':'Expected '+dt(o.t,i*1.2+1)}</small></div></div>`).join('')}</div>
+ <div class="acts"><a class="btn btn-dark" target="_blank" rel="noopener" href="https://wa.me/${WA}?text=${encodeURIComponent('Hi, checking on my order '+id)}">Message the boutique</a><a class="btn btn-line" href="book.html?s=alter">Book a trial</a></div>`}
+function appt(id){const A=LS.g('vb_appts',{});let a=A[id];
+ if(id=='VA-3108'){const d=nextSlots(3)[2];a={id,sn:'Ari work blouse',svc:'ari',date:dkey(d.d),time:d.t,home:false,status:'confirmed',n:'Sample customer'}}
+ if(!a)return null;const [y,m,d]=a.date.split('-').map(Number),when=new Date(y,m-1,d);const cx=a.status=='cancelled';
+ return `<div class="hdr"><div><small>Appointment</small><b>${id}</b><small>${a.sn} · ${a.home?'Home visit':'Kothrud studio'}</small></div><span class="pillst ${cx?'r':'g'}">${a.status}</span></div>
+ <div style="display:flex;gap:22px;align-items:center;margin:26px 0"><div style="width:96px;height:96px;border-radius:20px;background:var(--maroon);color:var(--ivory);display:grid;place-items:center;text-align:center;line-height:1"><div><b class="serif" style="font-size:42px;font-weight:500">${d}</b><br><small style="letter-spacing:.14em;font-size:11px">${when.toLocaleDateString('en-IN',{month:'short'}).toUpperCase()}</small></div></div><div><b class="serif" style="font-size:30px;font-weight:500;display:block">${t12(a.time)}</b><span style="color:var(--mute)">${when.toLocaleDateString('en-IN',{weekday:'long'})}</span></div></div>
+ <p style="color:var(--mute);font-size:14px">Bageshree Co-op Society, Dahanukar Colony, Kothrud. Please carry your fabric and any reference pictures.</p>
+ <div class="acts">${cx?`<a class="btn btn-dark" href="book.html?s=${a.svc}">Book again</a>`:`<a class="btn btn-dark" href="book.html?s=${a.svc}" data-res="${id}">Reschedule</a><button class="btn btn-line" data-cx="${id}">Cancel</button><a class="btn btn-line" target="_blank" rel="noopener" href="https://maps.google.com/?q=Vipra's+Boutique+Kothrud+Pune">Directions ↗</a>`}</div>`}
+function show(id){id=(id||'').trim().toUpperCase();if(!id)return;$('#tid').value=id;const h=id.startsWith('VA')?appt(id):order(id);
+ $('#res').innerHTML=h||`<div class="ph-empty"><div><p class="serif" style="font-size:26px;color:var(--maroon)">We couldn't find ${id}.</p><p style="margin-top:8px">Check the ID in your WhatsApp confirmation or <a class="link" target="_blank" href="https://wa.me/${WA}">message us</a>.</p></div></div>`;
+ if(window.gsap&&h){gsap.from('#res .hdr,#res .its,#res .acts',{y:20,opacity:0,stagger:.08,duration:.7,ease:'expo.out'});gsap.from('#res .st',{x:-20,opacity:0,stagger:.1,duration:.7,ease:'expo.out',delay:.2});const b=$('#res .bar i');if(b)gsap.to(b,{width:b.style.getPropertyValue('--w'),duration:1.4,ease:'expo.out',delay:.3})}else{const b=$('#res .bar i');if(b)b.style.width=b.style.getPropertyValue('--w')}}
+function recent(){const O=Object.entries(LS.g('vb_orders',{})).map(([k,o])=>[k,rs(o.tot)]),A=Object.values(LS.g('vb_appts',{})).map(a=>[a.id,a.sn]);const L=[...O,...A].reverse();
+ $('#recent').innerHTML=L.length?`<h6>On this device</h6>${L.map(([k,v])=>`<button data-sample="${k}"><b>${k}</b><span>${v} →</span></button>`).join('')}`:''}
+$('#tf').addEventListener('submit',e=>{e.preventDefault();show($('#tid').value)});
+document.addEventListener('click',e=>{const t=e.target.closest('[data-sample],[data-cx],[data-res]');if(!t)return;
+ if(t.dataset.sample)show(t.dataset.sample);
+ if(t.dataset.cx||t.dataset.res){const A=LS.g('vb_appts',{}),id=t.dataset.cx||t.dataset.res;if(A[id]){A[id].status='cancelled';LS.s('vb_appts',A)}if(t.dataset.cx){toast('Appointment '+id+' cancelled');show(id);recent()}}});
+recent();if(U.get('id'))show(U.get('id'));if(U.get('new'))toast('Order placed! Confirm it on WhatsApp ✦');
+initMotion();
+</script>
+</body>
+</html>

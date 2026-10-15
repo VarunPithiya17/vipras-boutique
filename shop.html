@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shop the Edit · Vipra's Boutique</title>
+<meta name="description" content="Blouses, kurtas, sarees, dress materials, twinning and kids wear from Vipra's Boutique, Kothrud Pune. Stitched to your measurements.">
+<meta name="theme-color" content="#1d070b">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.phero{background:linear-gradient(180deg,var(--sand),var(--ivory))}
+.phero .wrap{display:grid;grid-template-columns:1fr auto;align-items:end;gap:40px}
+.cnt{font-family:var(--serif);font-size:20px;color:var(--mute)}
+.cnt b{font-size:56px;font-weight:400;color:var(--gold);line-height:1;display:block}
+.phero .wrap.strip{display:flex;gap:14px;margin-top:40px;overflow-x:auto;scrollbar-width:none}
+.strip a{flex:0 0 auto;text-align:center;font-size:12px;font-weight:600;letter-spacing:.08em;color:var(--mute);transition:color .3s}
+.strip a span{display:block;width:84px;height:84px;border-radius:50%;overflow:hidden;margin:0 auto 8px;border:2px solid transparent;padding:3px;transition:border-color .4s}
+.strip a img{width:100%;height:100%;object-fit:cover;border-radius:50%;transition:transform .6s var(--ease)}
+.strip a:hover img{transform:scale(1.1)}
+.strip a.on{color:var(--maroon)}.strip a.on span{border-color:var(--gold)}
+.lay{display:grid;grid-template-columns:240px 1fr;gap:48px;align-items:start;padding-bottom:120px}
+aside.fl{position:sticky;top:96px;display:grid;gap:30px}
+.fl h6{font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:12px;font-weight:700}
+.fl label.ck{display:flex;align-items:center;gap:10px;font-size:14px;margin:8px 0;cursor:pointer;color:var(--mute)}
+.fl label.ck input{accent-color:var(--maroon);width:16px;height:16px}
+.fl label.ck:hover{color:var(--maroon)}
+.range{width:100%;accent-color:var(--maroon)}
+.rv{display:flex;justify-content:space-between;font-size:12px;color:var(--mute)}
+.bar{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-bottom:30px;flex-wrap:wrap}
+.bar .sbox{flex:1;max-width:420px}
+.active{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.active button{font-size:12px;padding:6px 12px;border-radius:999px;background:var(--sand)}
+.promo{grid-column:span 2;border-radius:10px;overflow:hidden;position:relative;background:var(--deep);color:var(--ivory);display:flex;flex-direction:column;justify-content:flex-end;padding:30px;min-height:100%}
+.promo video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+.promo>*{position:relative}
+.promo h3{font-family:var(--serif);font-size:clamp(30px,3vw,44px);font-weight:400;line-height:1;margin:10px 0 18px}
+.promo h3 em{color:var(--gold2)}
+.fbtn{display:none}
+.g3{grid-template-columns:repeat(3,1fr)}
+@media (max-width:820px){.g3{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:980px){
+ .lay{grid-template-columns:1fr}
+ aside.fl{position:fixed;inset:auto 0 0;top:auto;z-index:97;background:var(--paper);padding:28px 22px 30px;border-radius:22px 22px 0 0;transform:translateY(105%);transition:transform .6s var(--ease);max-height:80svh;overflow:auto;box-shadow:0 -20px 50px -20px rgba(0,0,0,.3)}
+ aside.fl.on{transform:none}
+ .fbtn{display:inline-flex}
+ .phero .wrap{grid-template-columns:1fr}
+ .promo{grid-column:span 2;min-height:300px}
+}
+</style>
+</head>
+<body data-page="shop" class="no-js">
+<script>document.body.classList.remove('no-js')</script>
+<main>
+<section class="phero">
+ <div class="wrap">
+  <div><div class="crumbs"><a href="index.html">Home</a> / Shop</div><h1 class="h1" data-split="now">The <em>Edit</em></h1><p class="lead" style="margin-top:20px" data-fade>Ready pieces, fabrics and made-to-measure designs. Every item can be stitched to your exact size.</p></div>
+  <div class="cnt" data-fade><b id="count">0</b>pieces in the edit</div>
+ </div>
+ <div class="wrap strip" id="strip"></div>
+</section>
+<section class="wrap lay">
+ <aside class="fl" id="fl">
+  <div style="display:flex;justify-content:space-between;align-items:center" class="fbtn-x"><h3 class="serif" style="font-size:28px;color:var(--maroon);font-weight:500">Filter</h3><button class="link" id="clr">Clear all</button></div>
+  <div><h6>Category</h6><div id="fc"></div></div>
+  <div><h6>Fabric</h6><div id="ff"></div></div>
+  <div><h6>Max price · <span id="pv"></span></h6><input type="range" class="range" id="pr" min="500" max="7000" step="100" value="7000"><div class="rv"><span>₹500</span><span>₹7,000</span></div></div>
+  <div><h6>Ready in</h6><label class="ck"><input type="checkbox" id="fast"> Within a week</label></div>
+  <button class="btn btn-dark fbtn" data-closef style="width:100%">Show results</button>
+ </aside>
+ <div>
+  <div class="bar">
+   <label class="sbox"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" placeholder="Search blouse, ikat, silk…" aria-label="Search products"></label>
+   <div style="display:flex;gap:10px"><button class="chip fbtn" id="fopen">Filters</button>
+   <select class="sel" id="sort" aria-label="Sort"><option value="f">Featured</option><option value="lo">Price: low → high</option><option value="hi">Price: high → low</option><option value="n">Newest</option></select></div>
+  </div>
+  <div class="active" id="active"></div>
+  <div class="grid g3" id="grid"></div>
+ </div>
+</section>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/site.js"></script>
+<script>
+const U=new URLSearchParams(location.search),FAB=[...new Set(P.map(p=>p.fab))];
+const S={c:new Set(U.get('c')?[U.get('c')]:[]),f:new Set(),max:7000,q:U.get('q')||'',sort:'f',fast:false};
+$('#q').value=S.q;
+$('#strip').innerHTML=[['All','l06'],...CATS].map(c=>`<a href="#" data-cat="${c[0]}"><span><img src="img/${c[1]}.webp" alt=""></span>${c[0]}</a>`).join('');
+$('#fc').innerHTML=CATS.map(c=>`<label class="ck"><input type="checkbox" value="${c[0]}" data-g="c"> ${c[0]} <small style="margin-left:auto">${P.filter(p=>p.c==c[0]).length}</small></label>`).join('');
+$('#ff').innerHTML=FAB.map(f=>`<label class="ck"><input type="checkbox" value="${f}" data-g="f"> ${f}</label>`).join('');
+function sync(){$$('#fl input[data-g]').forEach(i=>i.checked=S[i.dataset.g].has(i.value));$$('#strip a').forEach(a=>a.classList.toggle('on',a.dataset.cat=='All'?!S.c.size:S.c.size==1&&S.c.has(a.dataset.cat)));$('#pv').textContent=rs(S.max)}
+let first=true;
+function render(){
+ let L=P.filter(p=>(!S.c.size||S.c.has(p.c))&&(!S.f.size||S.f.has(p.fab))&&p.p<=S.max&&(!S.fast||p.days<=7)&&match(p,S.q));
+ if(S.sort=='lo')L.sort((a,b)=>a.p-b.p);if(S.sort=='hi')L.sort((a,b)=>b.p-a.p);if(S.sort=='n')L.sort((a,b)=>b.id-a.id);
+ const h=L.map(card);if(L.length>4)h.splice(4,0,`<a class="promo" href="studio.html" data-cur="Design"><video src="vid/ari.mp4" muted loop playsinline autoplay data-auto></video><span class="eyebrow" style="color:var(--gold2)">Can't find it?</span><h3>Design your own<br><em>blouse</em> online.</h3><span class="link" style="color:var(--ivory)">Open Design Studio →</span></a>`);
+ $('#grid').innerHTML=L.length?h.join(''):`<div class="empty">Nothing matches your filters.<br><small style="font-size:15px;font-family:var(--sans)">We stitch custom, <a class="link" href="book.html">book a consultation</a>.</small></div>`;
+ $('#count').textContent=L.length;
+ const chips=[...[...S.c].map(v=>['c',v]),...[...S.f].map(v=>['f',v]),...(S.q?[['q',S.q]]:[]),...(S.max<7000?[['max','Under '+rs(S.max)]]:[]),...(S.fast?[['fast','Within a week']]:[])];
+ $('#active').innerHTML=chips.map(([g,v])=>`<button data-x="${g}" data-v="${v}">${v} ✕</button>`).join('');
+ sync();
+ if(!first){reveal($$('#grid .pc,#grid .promo'));$$('#grid video').forEach(v=>v.play().catch(()=>{}))}
+ history.replaceState(null,'','shop.html'+(S.c.size==1?'?c='+encodeURIComponent([...S.c][0]):''));
+}
+document.addEventListener('change',e=>{const i=e.target;if(i.dataset.g){S[i.dataset.g][i.checked?'add':'delete'](i.value);render()}if(i.id=='fast'){S.fast=i.checked;render()}if(i.id=='sort'){S.sort=i.value;render()}});
+$('#pr').addEventListener('input',e=>{S.max=+e.target.value;render()});
+$('#q').addEventListener('input',e=>{S.q=e.target.value;render()});
+document.addEventListener('click',e=>{const a=e.target.closest('#strip a,[data-x],#clr,#fopen,[data-closef]');if(!a)return;e.preventDefault();
+ if(a.dataset.cat){S.c=new Set(a.dataset.cat=='All'?[]:[a.dataset.cat]);render()}
+ if(a.dataset.x){const g=a.dataset.x;if(g=='q'){S.q='';$('#q').value=''}else if(g=='max'){S.max=7000;$('#pr').value=7000}else if(g=='fast'){S.fast=false;$('#fast').checked=false}else S[g].delete(a.dataset.v);render()}
+ if(a.id=='clr'){S.c.clear();S.f.clear();S.q='';S.max=7000;S.fast=false;$('#q').value='';$('#pr').value=7000;$('#fast').checked=false;render()}
+ if(a.id=='fopen')$('#fl').classList.add('on');
+ if('closef' in a.dataset)$('#fl').classList.remove('on')});
+render();first=false;
+initMotion();
+if(window.gsap)gsap.from('#strip a',{y:30,opacity:0,stagger:.06,duration:1,ease:'expo.out',delay:.8});
+</script>
+</body>
+</html>

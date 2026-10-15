@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vipra's Boutique · Product</title>
+<meta name="theme-color" content="#1d070b">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.pd{display:grid;grid-template-columns:1.15fr .85fr;gap:64px;padding:120px 0 100px;align-items:start}
+.gal{display:grid;grid-template-columns:76px 1fr;gap:16px;position:sticky;top:90px}
+.thumbs{display:grid;gap:10px;align-content:start}
+.thumbs button{border-radius:8px;overflow:hidden;aspect-ratio:3/4;border:2px solid transparent;transition:border-color .3s;position:relative;background:var(--sand)}
+.thumbs button.on{border-color:var(--gold)}
+.thumbs img{width:100%;height:100%;object-fit:cover}
+.thumbs .pl::after{content:"▶";position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-size:14px;background:rgba(29,7,11,.35)}
+.main{border-radius:14px;overflow:hidden;aspect-ratio:3/4;position:relative;background:var(--sand);cursor:zoom-in;max-height:calc(100svh - 120px);width:100%}
+.main img,.main video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.main .zoom{transform:scale(1.8)}
+.info .crumbs{font-size:12px;color:var(--mute);margin-bottom:18px}
+.info h1{font-family:var(--serif);font-size:clamp(38px,4vw,58px);font-weight:500;line-height:1.02;color:var(--maroon)}
+.info .price{display:flex;align-items:baseline;gap:14px;margin:16px 0 6px}
+.info .price b{font-family:var(--serif);font-size:38px;font-weight:500;color:var(--gold)}
+.info .price small{color:var(--mute);font-size:12px}
+.info .d{color:var(--mute);margin:18px 0 6px}
+.blk{margin-top:26px}
+.blk h6{font-size:11px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px;display:flex;justify-content:space-between}
+.blk h6 a{letter-spacing:.06em;text-transform:none;color:var(--gold);font-weight:600;cursor:pointer}
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fit label{border:1px solid var(--line);border-radius:12px;padding:14px 16px;cursor:pointer;transition:.3s;display:block}
+.fit label:has(input:checked){border-color:var(--maroon);background:rgba(107,20,32,.04);box-shadow:inset 0 0 0 1px var(--maroon)}
+.fit input{display:none}
+.fit b{display:block;font-size:14px}
+.fit small{color:var(--mute);font-size:12px}
+.meas{display:none;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.meas.on{display:grid}
+.meas input{width:100%;height:44px;border:1px solid var(--line);border-radius:8px;padding:0 10px;background:#fff;font-size:14px}
+.meas label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);display:grid;gap:4px}
+.buy{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap;align-items:center}
+.buy .btn-dark{flex:1}
+.eta{display:flex;gap:12px;align-items:center;margin-top:20px;padding:16px 18px;border-radius:12px;background:var(--sand);font-size:13px}
+.eta svg{width:22px;height:22px;stroke:var(--maroon);fill:none;stroke-width:1.5;flex:none}
+details{border-bottom:1px solid var(--line)}
+details summary{list-style:none;padding:18px 0;cursor:pointer;display:flex;justify-content:space-between;font-weight:600;font-size:14px}
+details summary::after{content:"+";font-size:20px;transition:transform .4s var(--ease)}
+details[open] summary::after{transform:rotate(45deg)}
+details p,details ul{color:var(--mute);font-size:14px;padding-bottom:18px}
+details li{margin-left:18px}
+.sz-guide{width:min(640px,calc(100% - 32px))}
+.sz-guide .in{overflow-x:auto}
+.sz-guide table{width:100%;border-collapse:collapse;font-size:14px;margin-top:10px}
+.sz-guide th,.sz-guide td{padding:10px;border-bottom:1px solid var(--line);text-align:center}
+.sz-guide th{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.sticky-buy{position:fixed;inset:auto 0 0;z-index:55;background:var(--paper);box-shadow:0 -10px 30px -10px rgba(0,0,0,.2);padding:12px 16px;display:none;gap:12px;align-items:center;transform:translateY(110%);transition:transform .5s var(--ease)}
+.sticky-buy.on{transform:none}
+.sticky-buy img{width:44px;height:56px;object-fit:cover;border-radius:6px}
+.sticky-buy b{font-family:var(--serif);font-size:18px;display:block;line-height:1.1}
+@media (max-width:980px){
+ .pd{grid-template-columns:1fr;gap:34px;padding-top:90px}
+ .gal{position:relative;top:0;grid-template-columns:1fr}
+ .thumbs{grid-template-columns:repeat(4,64px);order:2}
+ .main{max-height:none}
+ .sticky-buy{display:flex}
+ .wa{bottom:90px}
+}
+</style>
+</head>
+<body data-page="shop" class="no-js">
+<script>document.body.classList.remove('no-js')</script>
+<main class="wrap">
+ <div class="pd" id="pd"></div>
+ <section style="padding-bottom:120px"><div class="head"><h2 class="h2" data-split>You may<br><em>also love</em></h2><a class="link" href="shop.html">Shop all</a></div><div class="grid" id="rel"></div></section>
+</main>
+<div class="modal sz-guide" id="guide"><button class="x" data-close>×</button><div class="in">
+ <div class="eyebrow">Size guide</div><h3 style="margin-top:10px">Find your <em>fit</em></h3><p class="s">Body measurements in inches. Between sizes? Choose "My measurements" and we'll stitch to you exactly.</p>
+ <table><tr><th>Size</th><th>Bust</th><th>Waist</th><th>Shoulder</th><th>Armhole</th></tr><tr><td>XS</td><td>32</td><td>26</td><td>13.5</td><td>15</td></tr><tr><td>S</td><td>34</td><td>28</td><td>14</td><td>16</td></tr><tr><td>M</td><td>36</td><td>30</td><td>14.5</td><td>17</td></tr><tr><td>L</td><td>38</td><td>32</td><td>15</td><td>18</td></tr><tr><td>XL</td><td>40</td><td>34</td><td>15.5</td><td>19</td></tr><tr><td>XXL</td><td>42</td><td>36</td><td>16</td><td>20</td></tr></table>
+</div></div>
+<div class="sticky-buy" id="sb"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/site.js"></script>
+<script>
+const p=byId(new URLSearchParams(location.search).get('id'))||P[1];
+document.title=p.n+" · Vipra's Boutique";
+const sized=['Blouses','Kurtas','Kids','Twinning','Sarees'].includes(p.c);
+const media=[...p.i.map(i=>({t:'i',s:`img/${i}.webp`})),...(p.v?[{t:'v',s:`vid/${p.v}.mp4`,po:`vid/${p.v}.jpg`}]:[])];
+const eta=new Date();eta.setDate(eta.getDate()+p.days);
+const prof=LS.g('vb_meas',{});
+const MF=[['bust','Bust'],['waist','Waist'],['shoulder','Shoulder'],['arm','Armhole'],['len','Length'],['sleeve','Sleeve']];
+$('#pd').innerHTML=`
+<div class="gal"><div class="thumbs">${media.map((m,i)=>`<button class="${i?'':'on'} ${m.t=='v'?'pl':''}" data-m="${i}" aria-label="View ${i+1}"><img src="${m.t=='v'?m.po:m.s}" alt=""></button>`).join('')}</div><div class="main" id="main" data-cur="Zoom"></div></div>
+<div class="info">
+ <div class="crumbs"><a href="index.html">Home</a> / <a href="shop.html?c=${encodeURIComponent(p.c)}">${p.c}</a> / ${p.n}</div>
+ ${p.t?`<span class="eyebrow">${p.t}</span>`:''}
+ <h1 data-split="now">${p.n}</h1>
+ <div class="price" data-fade=".3"><b>${rs(p.p)}</b><small>incl. stitching · ${p.fab}</small></div>
+ <p class="d" data-fade=".35">${p.d}</p>
+ ${sized?`<div class="blk" data-fade=".4"><h6>Fit <a data-open="guide">Size guide</a></h6>
+  <div class="fit"><label><input type="radio" name="fit" value="std" checked><b>Standard size</b><small>XS – XXL</small></label><label><input type="radio" name="fit" value="me"><b>My measurements</b><small>Stitched to you · free</small></label></div>
+  <div class="chips" id="szs" style="margin-top:12px">${['XS','S','M','L','XL','XXL'].map((s,i)=>`<button class="chip${i==2?' on':''}" data-sz="${s}">${s}</button>`).join('')}</div>
+  <div class="meas" id="meas">${MF.map(([k,l])=>`<label>${l} (in)<input inputmode="decimal" data-k="${k}" value="${prof[k]||''}" placeholder="—"></label>`).join('')}<small style="grid-column:1/-1;color:var(--mute)">Saved to your profile for next time. Not sure? <a class="link" href="book.html?s=blouse">Book a measurement visit</a></small></div></div>`:''}
+ <div class="blk" data-fade=".45"><h6>Quantity</h6><span class="qty"><button data-qq="-1">−</button><span id="qq">1</span><button data-qq="1">+</button></span></div>
+ <div class="buy" data-fade=".5"><button class="btn btn-dark" id="addb">Add to bag · ${rs(p.p)}</button><button class="wl${store.wish.includes(p.id)?' on':''}" data-wl="${p.id}" style="width:52px;height:52px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center" aria-label="Wishlist">${heart}</button></div>
+ <a class="btn btn-line" style="width:100%;margin-top:10px" target="_blank" rel="noopener" href="https://wa.me/${WA}?text=${encodeURIComponent('Hi! I\'m interested in '+p.n+' ('+rs(p.p)+') — '+location.href)}">Ask on WhatsApp</a>
+ <div class="eta" data-fade=".55"><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg><span>Order today, ready by <b>${eta.toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'short'})}</b>. Free trial at the Kothrud studio.</span></div>
+ <div class="blk">
+  <details open><summary>Details</summary><ul><li>Fabric: ${p.fab}</li><li>Stitching: ${p.days} working days</li><li>Lining, hooks and finishing included</li><li>Category: ${p.c}</li></ul></details>
+  <details><summary>Customise it</summary><p>Change the neckline, sleeves, length or add Ari work, latkans and piping. Try it in the <a class="link" href="studio.html">Design Studio</a> first.</p></details>
+  <details><summary>Delivery & returns</summary><p>Free pickup in Kothrud, ₹60 delivery across Pune (free above ₹2,999), ₹120 across India. Free alterations within 15 days of delivery.</p></details>
+  <details><summary>Care</summary><p>Dry clean for embroidered and silk pieces. Gentle hand wash in cold water for cottons. Iron on reverse.</p></details>
+ </div>
+</div>`;
+function showM(i){const m=media[i];$('#main').innerHTML=m.t=='v'?`<video src="${m.s}" poster="${m.po}" muted loop playsinline autoplay></video>`:`<img src="${m.s}" alt="${p.n}">`;$$('.thumbs button').forEach((b,j)=>b.classList.toggle('on',i==j));if(window.gsap)gsap.from('#main>*',{opacity:0,scale:1.08,duration:.8,ease:'expo.out'})}
+showM(0);
+const mn=$('#main');mn.addEventListener('mousemove',e=>{const im=$('img',mn);if(!im)return;const r=mn.getBoundingClientRect();im.style.transformOrigin=`${(e.clientX-r.left)/r.width*100}% ${(e.clientY-r.top)/r.height*100}%`;im.classList.add('zoom')});
+mn.addEventListener('mouseleave',()=>{const im=$('img',mn);im&&im.classList.remove('zoom')});
+document.addEventListener('click',e=>{const t=e.target.closest('[data-m],[data-sz],[data-qq],#addb,#sbadd');if(!t)return;
+ if(t.dataset.m)showM(+t.dataset.m);
+ if(t.dataset.sz)$$('#szs .chip').forEach(b=>b.classList.toggle('on',b==t));
+ if(t.dataset.qq){const q=$('#qq');q.textContent=Math.max(1,+q.textContent+ +t.dataset.qq)}
+ if(t.id=='addb'||t.id=='sbadd'){const me=$('input[name=fit]:checked')?.value=='me';let size='',note='';
+  if(sized){if(me){const m={};$$('#meas input').forEach(i=>{if(i.value)m[i.dataset.k]=i.value});if(Object.keys(m).length<3){toast('Add at least bust, waist & shoulder');$('#meas input').focus();return}LS.s('vb_meas',{...prof,...m});size='Custom';note=Object.entries(m).map(([k,v])=>k+' '+v).join(', ')}else size=$('#szs .chip.on').dataset.sz}
+  add(p.id,size,+$('#qq').textContent,note);open('cart')}});
+document.addEventListener('change',e=>{if(e.target.name=='fit'){const me=e.target.value=='me';$('#meas').classList.toggle('on',me);$('#szs').style.display=me?'none':''}});
+$('#sb').innerHTML=`<img src="img/${p.i[0]}.webp" alt=""><div style="flex:1;min-width:0"><b>${p.n}</b><small style="color:var(--gold)">${rs(p.p)}</small></div><button class="btn btn-dark" id="sbadd" style="padding:13px 18px">Add</button>`;
+$('#rel').innerHTML=P.filter(x=>x.c==p.c&&x.id!=p.id).concat(P.filter(x=>x.c!=p.c)).slice(0,4).map(card).join('');
+const rv=LS.g('vb_recent',[]).filter(x=>x!=p.id);LS.s('vb_recent',[p.id,...rv].slice(0,8));
+initMotion();
+if(window.gsap){ScrollTrigger.create({trigger:'#addb',start:'bottom top',onEnter:()=>$('#sb').classList.add('on'),onLeaveBack:()=>$('#sb').classList.remove('on')});gsap.from('.thumbs button',{x:-20,opacity:0,stagger:.08,duration:.8,delay:.7})}
+</script>
+</body>
+</html>

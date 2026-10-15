@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Design Studio · Vipra's Boutique</title>
+<meta name="description" content="Design your own blouse online: neckline, back design, sleeves, Ari work and fabric. Instant price, book stitching at Vipra's Boutique, Pune.">
+<meta name="theme-color" content="#1d070b">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+body{background:var(--deep)}
+header.hd{background:rgba(246,239,228,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+header.hd .in{height:64px}
+.studio{min-height:100svh;display:grid;grid-template-columns:1.1fr .9fr;color:var(--ivory)}
+.canvas{position:sticky;top:0;height:100svh;display:grid;place-items:center;overflow:hidden;background:radial-gradient(60% 60% at 50% 45%,#3a0f17 0,var(--deep) 70%)}
+.canvas .grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--lineL) 1px,transparent 1px),linear-gradient(90deg,var(--lineL) 1px,transparent 1px);background-size:48px 48px;opacity:.25;mask-image:radial-gradient(circle,#000 30%,transparent 75%)}
+.fig{position:relative;width:min(560px,80%);aspect-ratio:1}
+.fig svg{width:100%;height:100%;filter:drop-shadow(0 40px 50px rgba(0,0,0,.45))}
+.fig .shadow{position:absolute;left:20%;right:20%;bottom:2%;height:24px;border-radius:50%;background:radial-gradient(rgba(0,0,0,.5),transparent 70%)}
+.ctop{position:absolute;top:96px;left:32px;right:32px;display:flex;justify-content:space-between;align-items:center}
+.vt{display:flex;background:rgba(246,239,228,.08);border-radius:999px;padding:4px}
+.vt button{padding:9px 20px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,239,228,.6);transition:.3s}
+.vt button.on{background:var(--ivory);color:var(--maroon)}
+.cbot{position:absolute;bottom:32px;left:32px;right:32px;display:flex;justify-content:space-between;align-items:end;gap:20px}
+.cbot .lbl{font-family:var(--serif);font-size:clamp(22px,2.2vw,32px);font-style:italic;line-height:1.1;max-width:60%}
+.cbot .pr{text-align:right}
+.cbot .pr small{font-size:10px;letter-spacing:.2em;color:var(--gold2);display:block}
+.cbot .pr b{font-family:var(--serif);font-size:48px;font-weight:400;line-height:1}
+.panel{padding:120px 48px 80px;background:var(--paper);color:var(--ink)}
+.panel h1{font-family:var(--serif);font-size:clamp(40px,4.4vw,64px);font-weight:400;color:var(--maroon);line-height:.95}
+.panel h1 em{color:var(--gold)}
+.grp{margin-top:34px}
+.grp h6{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;margin-bottom:14px;display:flex;justify-content:space-between}
+.grp h6 span{color:var(--gold);letter-spacing:.04em;text-transform:none}
+.op{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.op.c4{grid-template-columns:repeat(4,1fr)}
+.op button{border:1px solid var(--line);border-radius:14px;padding:10px 6px 12px;background:#fff;font-size:11.5px;font-weight:600;transition:.3s var(--ease);display:grid;gap:6px;justify-items:center}
+.op button:hover{border-color:var(--maroon);transform:translateY(-2px)}
+.op button.on{border-color:var(--maroon);box-shadow:inset 0 0 0 1px var(--maroon);background:rgba(107,20,32,.04)}
+.op svg{width:46px;height:46px}
+.sw{display:flex;gap:10px;flex-wrap:wrap}
+.sw button{width:44px;height:44px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1px var(--line);transition:.3s var(--ease)}
+.sw button.on{box-shadow:0 0 0 2px var(--maroon);transform:scale(1.12)}
+.break{margin-top:34px;border-top:1px solid var(--line);padding-top:18px}
+.break div{display:flex;justify-content:space-between;font-size:14px;color:var(--mute);padding:5px 0}
+.break .t{font-family:var(--serif);font-size:30px;color:var(--maroon);padding-top:12px}
+.acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.acts .btn-dark{flex:1}
+.saved{margin-top:40px}
+.saved .row{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px}
+.saved button{flex:0 0 96px;border-radius:12px;background:#fff;border:1px solid var(--line);padding:6px;position:relative}
+.saved button svg{width:100%;height:auto}
+.saved button small{font-size:10px;color:var(--mute)}
+.hint{display:flex;gap:10px;align-items:center;margin-top:18px;font-size:12px;color:var(--mute)}
+@media (max-width:980px){
+ .studio{grid-template-columns:1fr}
+ .canvas{position:sticky;top:0;height:56svh;z-index:5}
+ .fig{width:min(320px,70%)}
+ .ctop{top:74px;left:16px;right:16px}
+ .cbot{bottom:14px;left:16px;right:16px}
+ .cbot .pr b{font-size:34px}
+ .cbot .lbl{font-size:18px}
+ .panel{padding:40px 16px 80px}
+ .op{grid-template-columns:repeat(5,1fr);gap:6px}
+ .op button{font-size:10px;padding:8px 2px}
+ .op svg{width:36px;height:36px}
+}
+</style>
+</head>
+<body data-page="studio" class="no-js">
+<script>document.body.classList.remove('no-js')</script>
+<main class="studio">
+ <section class="canvas">
+  <div class="grid-bg"></div>
+  <div class="ctop"><span class="eyebrow" style="color:var(--gold2)">Live preview</span><div class="vt"><button class="on" data-view="front">Front</button><button data-view="back">Back</button></div></div>
+  <div class="fig"><div class="shadow"></div><div id="fig"></div></div>
+  <div class="cbot"><div class="lbl" id="lbl"></div><div class="pr"><small>ESTIMATED STITCHING</small><b id="price">₹0</b></div></div>
+ </section>
+ <section class="panel">
+  <div class="crumbs" style="font-size:12px;color:var(--mute);margin-bottom:18px"><a href="index.html">Home</a> / Design Studio</div>
+  <h1 data-split="now">Design your<br><em>dream blouse.</em></h1>
+  <p class="lead" style="margin-top:16px" data-fade=".4">Every choice updates the preview and price instantly. When you love it, book a fitting and we'll stitch exactly this.</p>
+  <div class="grp" data-fade><h6>Front neckline <span id="v-front"></span></h6><div class="op" id="o-front"></div></div>
+  <div class="grp" data-fade><h6>Back design <span id="v-back"></span></h6><div class="op" id="o-back"></div></div>
+  <div class="grp" data-fade><h6>Sleeves <span id="v-sleeve"></span></h6><div class="op c4" id="o-sleeve"></div></div>
+  <div class="grp" data-fade><h6>Embellishment <span id="v-work"></span></h6><div class="op c4" id="o-work"></div></div>
+  <div class="grp" data-fade><h6>Fabric shade <span id="v-color"></span></h6><div class="sw" id="o-color"></div></div>
+  <div class="grp" data-fade><label style="display:flex;gap:10px;align-items:center;font-size:14px;cursor:pointer"><input type="checkbox" id="latkan" style="accent-color:var(--maroon);width:18px;height:18px"> Add latkans (tassels) on the back <span style="color:var(--gold);margin-left:auto;font-weight:700">+₹200</span></label></div>
+  <div class="break" id="break"></div>
+  <div class="acts"><button class="btn btn-dark" id="bookd">Book this design →</button><button class="btn btn-line" id="saved">♡ Save</button><button class="btn btn-line" id="share">Share</button></div>
+  <div class="hint">✦ Final price is confirmed at your fitting. Bring your own fabric or choose from our studio.</div>
+  <div class="saved" id="sv"></div>
+ </section>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/blouse.js"></script>
+<script>
+const OPT={
+ front:[['round','Round',0],['sweetheart','Sweetheart',100],['v','V-neck',0],['boat','Boat',100],['square','Square',50]],
+ back:[['deepu','Deep U',150],['dori','Dori tie',250],['keyhole','Keyhole',200],['matka','Matka',200],['paan','Paan',250]],
+ sleeve:[['none','Sleeveless',0],['short','Short',0],['elbow','Elbow',80],['three','¾ sleeve',120]],
+ work:[['plain','Plain',0],['piping','Piping',150],['mirror','Mirror',600],['ari','Ari work',1750]],
+ color:[['#8a1c2b','Maroon'],['#c8302c','Sindoor red'],['#d2577a','Rani pink'],['#e9a7a0','Blush'],['#e0a526','Haldi yellow'],['#2f6b4f','Bottle green'],['#1f6f78','Peacock teal'],['#24396b','Royal blue'],['#1f1a1c','Noir'],['#c9b27c','Antique gold']]};
+const BASE=450;
+const D=Object.assign({front:'sweetheart',back:'dori',sleeve:'elbow',work:'ari',color:'#8a1c2b',latkan:false,view:'front'},(()=>{try{return JSON.parse(atob(location.hash.slice(1)))}catch(e){return{}}})());
+const nm=(g,v)=>(OPT[g].find(o=>o[0]==v)||[])[1];
+const price=()=>BASE+['front','back','sleeve','work'].reduce((a,g)=>a+OPT[g].find(o=>o[0]==D[g])[2],0)+(D.latkan?200:0);
+const label=()=>`${nm('front',D.front)} front · ${nm('back',D.back)} back · ${nm('sleeve',D.sleeve)}${D.work!='plain'?' · '+nm('work',D.work):''}`;
+function thumbs(){
+ for(const g of ['front','back','sleeve','work'])$('#o-'+g).innerHTML=OPT[g].map(([v,l,p])=>{const o={...D,[g]:v,view:g=='back'?'back':'front'};return `<button data-g="${g}" data-v="${v}" class="${D[g]==v?'on':''}">${blouseSVG(o)}<span>${l}</span>${p?`<small style="color:var(--gold)">+${rs(p)}</small>`:''}</button>`}).join('');
+ $('#o-color').innerHTML=OPT.color.map(([c,l])=>`<button data-g="color" data-v="${c}" style="background:${c}" class="${D.color==c?'on':''}" aria-label="${l}" title="${l}"></button>`).join('');
+ for(const g of ['front','back','sleeve','work'])$('#v-'+g).textContent=nm(g,D[g]);$('#v-color').textContent=OPT.color.find(c=>c[0]==D.color)[1]}
+let pv=0;
+function draw(anim){
+ $('#fig').innerHTML=blouseSVG(D);$('#lbl').textContent=label();
+ const p=price(),o={v:pv};if(window.gsap&&anim){gsap.to(o,{v:p,duration:.6,ease:'power2.out',onUpdate:()=>$('#price').textContent=rs(o.v)});gsap.fromTo('#fig svg',{scale:.94,rotateY:D.view=='back'?-25:25},{scale:1,rotateY:0,duration:.8,ease:'expo.out'})}else $('#price').textContent=rs(p);pv=p;
+ $('#break').innerHTML=`<div><span>Base stitching with lining</span><span>${rs(BASE)}</span></div>`+['front','back','sleeve','work'].map(g=>{const x=OPT[g].find(o=>o[0]==D[g]);return x[2]?`<div><span>${x[1]} ${g=='work'?'':g=='sleeve'?'sleeves':g}</span><span>+${rs(x[2])}</span></div>`:''}).join('')+(D.latkan?`<div><span>Latkans</span><span>+₹200</span></div>`:'')+`<div class="t"><span>Estimate</span><span>${rs(p)}</span></div>`;
+ history.replaceState(null,'','#'+btoa(JSON.stringify({front:D.front,back:D.back,sleeve:D.sleeve,work:D.work,color:D.color,latkan:D.latkan})))}
+function savedList(){const S=LS.g('vb_designs',[]);$('#sv').innerHTML=S.length?`<h6 style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:12px">Your saved designs</h6><div class="row">${S.map((s,i)=>`<button data-load="${i}">${blouseSVG(s)}<small>${rs(s.price)}</small></button>`).join('')}</div>`:''}
+document.addEventListener('click',e=>{const t=e.target.closest('[data-g],[data-view],#bookd,#saved,#share,[data-load]');if(!t)return;
+ if(t.dataset.g){D[t.dataset.g]=t.dataset.v;if(t.dataset.g=='back'){D.view='back';$$('.vt button').forEach(b=>b.classList.toggle('on',b.dataset.view=='back'))}else if(t.dataset.g=='front'){D.view='front';$$('.vt button').forEach(b=>b.classList.toggle('on',b.dataset.view=='front'))}thumbs();draw(1)}
+ if(t.dataset.view){D.view=t.dataset.view;$$('.vt button').forEach(b=>b.classList.toggle('on',b==t));draw(1)}
+ if(t.id=='bookd'){const d={front:D.front,back:D.back,sleeve:D.sleeve,work:D.work,color:D.color,latkan:D.latkan,price:price(),label:label()};location.href='book.html?design='+encodeURIComponent(JSON.stringify(d))}
+ if(t.id=='saved'){const S=LS.g('vb_designs',[]);S.unshift({...D,view:'front',price:price(),label:label()});LS.s('vb_designs',S.slice(0,8));savedList();toast('Design saved ♥')}
+ if(t.id=='share'){const u=location.href;(navigator.share?navigator.share({title:"My Vipra's blouse design",url:u}):navigator.clipboard.writeText(u).then(()=>toast('Link copied, send it to anyone'))).catch(()=>{})}
+ if(t.dataset.load){Object.assign(D,LS.g('vb_designs',[])[+t.dataset.load]);$('#latkan').checked=D.latkan;thumbs();draw(1)}});
+$('#latkan').checked=D.latkan;$('#latkan').addEventListener('change',e=>{D.latkan=e.target.checked;D.view='back';$$('.vt button').forEach(b=>b.classList.toggle('on',b.dataset.view=='back'));draw(1)});
+thumbs();draw(0);savedList();
+initMotion();
+if(window.gsap){const ps=$$('#fig path');ps.forEach(p=>{const L=p.getTotalLength();if(L&&!p.classList.contains('ari'))gsap.from(p,{strokeDasharray:L,strokeDashoffset:L,fillOpacity:0,duration:2,ease:'power2.inOut',delay:.6,clearProps:'strokeDasharray,strokeDashoffset'})});gsap.from('.op button,.sw button',{y:20,opacity:0,stagger:.015,duration:.6,delay:.8,ease:'power3.out'})}
+</script>
+</body>
+</html>

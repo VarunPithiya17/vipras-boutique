@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Book a Fitting · Vipra's Boutique</title>
+<meta name="description" content="Book a stitching consultation, measurement or fitting at Vipra's Boutique, Kothrud Pune. Live slots, instant confirmation.">
+<meta name="theme-color" content="#1d070b">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.bhero{position:relative;padding:150px 0 60px;overflow:hidden;color:var(--ivory);background:var(--deep)}
+.bhero video{position:absolute;right:0;top:0;width:42%;height:100%;object-fit:cover;opacity:.55;mask-image:linear-gradient(90deg,transparent,#000 40%)}
+.bhero .wrap{position:relative}
+.bhero .crumbs{color:rgba(246,239,228,.5)}
+.bhero .perks{display:flex;gap:28px;margin-top:34px;flex-wrap:wrap;font-size:13px;color:rgba(246,239,228,.75)}
+.bhero .perks span::before{content:"✦ ";color:var(--gold2)}
+.bk{display:grid;grid-template-columns:1fr 380px;gap:48px;align-items:start;padding:60px 0 120px}
+.steps{display:flex;gap:6px;margin-bottom:34px}
+.steps button{flex:1;text-align:left;padding:12px 0 0;border-top:2px solid var(--line);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);font-weight:700;transition:color .3s,border-color .3s}
+.steps button.on,.steps button.done{border-color:var(--maroon);color:var(--maroon)}
+.steps button span{display:block;font-family:var(--serif);font-size:22px;letter-spacing:0;text-transform:none;font-weight:500}
+.pane{display:none}.pane.on{display:block}
+.pane h2{font-family:var(--serif);font-size:clamp(32px,3.4vw,48px);font-weight:400;color:var(--maroon);line-height:1;margin-bottom:24px}
+.pane h2 em{color:var(--gold)}
+.svcs{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.svc{border:1px solid var(--line);border-radius:16px;padding:22px;text-align:left;transition:.35s var(--ease);background:#fff;position:relative}
+.svc:hover{border-color:var(--maroon);transform:translateY(-3px);box-shadow:0 20px 40px -24px rgba(74,13,22,.4)}
+.svc.on{border-color:var(--maroon);box-shadow:inset 0 0 0 1px var(--maroon);background:rgba(107,20,32,.03)}
+.svc.on::after{content:"✓";position:absolute;top:16px;right:16px;width:26px;height:26px;border-radius:50%;background:var(--maroon);color:#fff;display:grid;place-items:center;font-size:13px}
+.svc b{font-family:var(--serif);font-size:24px;font-weight:500;display:block;color:var(--ink)}
+.svc small{color:var(--mute);font-size:13px;display:block;margin:4px 0 14px}
+.svc .m{display:flex;gap:14px;font-size:12px;font-weight:600;color:var(--gold);letter-spacing:.06em}
+.cal{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px}
+.cal .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.cal .top b{font-family:var(--serif);font-size:26px;font-weight:500;color:var(--maroon)}
+.cal .top button{width:40px;height:40px;border-radius:50%;border:1px solid var(--line)}
+.cal .top button:disabled{opacity:.3}
+.dg{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;text-align:center}
+.dg .h{font-size:11px;letter-spacing:.12em;color:var(--mute);font-weight:700;padding:6px 0}
+.dg button{aspect-ratio:1;border-radius:12px;font-size:15px;font-weight:600;position:relative;transition:.25s}
+.dg button:hover:not(:disabled){background:var(--sand)}
+.dg button:disabled{color:#c9bdb3;cursor:default}
+.dg button.on{background:var(--maroon);color:var(--ivory)}
+.dg button.today::after{content:"";position:absolute;left:50%;bottom:6px;width:4px;height:4px;border-radius:50%;background:var(--gold);translate:-50% 0}
+.dg button .fe{position:absolute;left:0;right:0;bottom:5px;font-size:8px;letter-spacing:.06em;color:var(--gold);font-weight:700}
+.dg button.on .fe{color:var(--gold2)}
+.legend{display:flex;gap:18px;margin-top:14px;font-size:12px;color:var(--mute)}
+.times{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.times button{padding:16px 8px;border-radius:12px;border:1px solid var(--line);background:#fff;font-weight:600;font-size:14px;transition:.25s}
+.times button:hover:not(:disabled){border-color:var(--maroon)}
+.times button.on{background:var(--maroon);color:var(--ivory);border-color:var(--maroon)}
+.times button:disabled{background:repeating-linear-gradient(45deg,#f3ece2,#f3ece2 6px,#efe6da 6px,#efe6da 12px);color:#b8aa9d;text-decoration:line-through;cursor:not-allowed}
+.tgrp{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);font-weight:700;margin:22px 0 10px}
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
+.visit label{border:1px solid var(--line);border-radius:12px;padding:16px;cursor:pointer;background:#fff;transition:.3s}
+.visit label:has(input:checked){border-color:var(--maroon);box-shadow:inset 0 0 0 1px var(--maroon)}
+.visit input{display:none}
+.visit b{display:block}.visit small{color:var(--mute);font-size:12px}
+.mt{display:flex;align-items:center;gap:10px;font-size:14px;margin:18px 0 12px;cursor:pointer}
+.mt input{accent-color:var(--maroon);width:18px;height:18px}
+.meas{display:none;grid-template-columns:repeat(3,1fr);gap:10px}
+.meas.on{display:grid}
+.navb{display:flex;justify-content:space-between;margin-top:34px;gap:12px}
+.sum{position:sticky;top:96px;background:var(--deep);color:var(--ivory);border-radius:22px;padding:30px;overflow:hidden}
+.sum::before{content:"";position:absolute;right:-80px;top:-80px;width:220px;height:220px;border-radius:50%;border:1px dashed var(--lineL)}
+.sum h3{font-family:var(--serif);font-size:30px;font-weight:400}
+.sum dl{margin:22px 0;display:grid;gap:14px}
+.sum dt{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2)}
+.sum dd{font-family:var(--serif);font-size:21px;line-height:1.2;min-height:1.2em}
+.sum dd.e{color:rgba(246,239,228,.3);font-family:var(--sans);font-size:14px}
+.sum .fine{font-size:12px;color:rgba(246,239,228,.55);border-top:1px solid var(--lineL);padding-top:16px}
+.design{display:flex;gap:12px;align-items:center;background:var(--sand);border-radius:14px;padding:12px;margin-bottom:18px}
+.design svg{width:70px;height:70px;background:#fff;border-radius:10px}
+.ok{text-align:center;padding:30px 0}
+.ok .seal{width:120px;height:120px;margin:0 auto 24px;border-radius:50%;background:var(--maroon);display:grid;place-items:center;color:var(--ivory);font-size:44px}
+.ok h2{margin-bottom:10px}
+.ok .id{display:inline-block;font-family:var(--serif);font-size:30px;color:var(--gold);border:1px dashed var(--gold);padding:8px 22px;border-radius:12px;margin:14px 0 26px}
+.ok .acts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.mine{margin-top:60px}
+.ap{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;padding:18px 0;border-bottom:1px solid var(--line)}
+.ap .dt{width:64px;height:64px;border-radius:14px;background:var(--maroon);color:var(--ivory);display:grid;place-items:center;text-align:center;line-height:1}
+.ap .dt b{font-family:var(--serif);font-size:26px;font-weight:500;display:block}
+.ap .dt small{font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+.ap.cx{opacity:.45}.ap.cx .dt{background:var(--mute)}
+.ap h5{font-size:15px}.ap small{color:var(--mute);font-size:12px}
+@media (max-width:980px){.bk{grid-template-columns:1fr}.sum{position:relative;top:0;order:-1}.bhero video{width:100%;opacity:.25;mask-image:none}}
+@media (max-width:620px){.svcs,.visit{grid-template-columns:1fr}.times{grid-template-columns:repeat(3,1fr)}.steps button{font-size:9px}.steps button span{font-size:17px}.meas{grid-template-columns:repeat(2,1fr)}.cal{padding:14px}.dg{gap:3px}}
+</style>
+</head>
+<body data-page="book" data-dark="1" class="no-js">
+<script>document.body.classList.remove('no-js')</script>
+<main>
+<section class="bhero">
+ <video src="vid/fabric.mp4" poster="vid/fabric.jpg" muted loop playsinline autoplay></video>
+ <div class="wrap">
+  <div class="crumbs"><a href="index.html">Home</a> / Appointments</div>
+  <h1 class="h1" data-split="now">Book your<br><em>fitting.</em></h1>
+  <p class="lead" style="margin-top:20px" data-fade=".4">Consultations, measurements, trials and pickups. Choose a slot that suits you and it's confirmed instantly.</p>
+  <div class="perks" data-fade=".5"><span>Instant confirmation</span><span>Free consultation</span><span>Home visits in Kothrud</span><span>Reschedule anytime</span></div>
+ </div>
+</section>
+<section class="wrap bk">
+ <div id="flow">
+  <div class="steps" id="steps"><button data-go="0"><span>Service</span>Step 1</button><button data-go="1"><span>Date</span>Step 2</button><button data-go="2"><span>Time</span>Step 3</button><button data-go="3"><span>Details</span>Step 4</button></div>
+  <div class="pane" data-p="0"><h2>What can we <em>stitch</em> for you?</h2><div class="svcs" id="svcs"></div></div>
+  <div class="pane" data-p="1"><h2>Pick a <em>day</em></h2><div class="cal"><div class="top"><button id="pm" aria-label="Previous month">←</button><b id="ml"></b><button id="nm" aria-label="Next month">→</button></div><div class="dg" id="dg"></div><div class="legend"><span>● Today</span><span style="color:var(--gold)">FEW = few slots left</span><span>Sundays closed</span></div></div></div>
+  <div class="pane" data-p="2"><h2>Choose a <em>time</em></h2><p id="tdate" style="color:var(--mute);margin:-12px 0 6px"></p><div id="times"></div></div>
+  <div class="pane" data-p="3"><h2>Your <em>details</em></h2>
+   <div id="dsg"></div>
+   <div class="visit"><label><input type="radio" name="v" value="studio" checked><b>Visit the studio</b><small>Dahanukar Colony, Kothrud</small></label><label><input type="radio" name="v" value="home"><b>Home visit</b><small>Kothrud & nearby · +₹100</small></label></div>
+   <form class="f" id="df">
+    <label>Name<input name="n" required autocomplete="name"></label>
+    <label>Mobile (WhatsApp)<input name="p" type="tel" required pattern="[0-9+ ]{10,14}" autocomplete="tel"></label>
+    <label class="full" id="addr" style="display:none">Address for home visit<input name="a" placeholder="Flat, society, area"></label>
+    <label class="full">Tell us about it<textarea name="m" placeholder="Occasion, design idea, fabric you already have…"></textarea></label>
+   </form>
+   <label class="mt"><input type="checkbox" id="mt"> I know my measurements (saves a visit)</label>
+   <div class="meas f" id="meas"></div>
+  </div>
+  <div class="pane" data-p="4"><div class="ok" id="ok"></div></div>
+  <div class="navb" id="navb"><button class="btn btn-line" id="back">← Back</button><button class="btn btn-dark" id="next">Continue →</button></div>
+  <div class="mine" id="mine"></div>
+ </div>
+ <aside class="sum" id="sum"></aside>
+</section>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/blouse.js"></script>
+<script>
+const U=new URLSearchParams(location.search);
+const B={svc:U.get('s')||null,date:null,time:null,step:0,design:null};
+if(U.get('design')){try{B.design=JSON.parse(U.get('design'));B.svc=B.design.work=='ari'?'ari':'blouse'}catch(e){}}
+if(U.get('d')){const [y,m,d]=U.get('d').split('-').map(Number);B.date=new Date(y,m-1,d);B.time=U.get('t');B.svc=B.svc||'blouse'}
+const MS=[['bust','Bust'],['waist','Waist'],['shoulder','Shoulder'],['arm','Armhole'],['len','Blouse length'],['sleeve','Sleeve length']];
+const prof=LS.g('vb_meas',{});
+$('#meas').innerHTML=MS.map(([k,l])=>`<label>${l} (in)<input inputmode="decimal" data-k="${k}" value="${prof[k]||''}"></label>`).join('');
+$('#svcs').innerHTML=SERVICES.map(s=>`<button class="svc" data-s="${s.id}"><b>${s.n}</b><small>${s.d}</small><div class="m"><span>⏱ ${s.m} min</span><span>${s.p?'From '+rs(s.p):'On quote'}</span></div></button>`).join('');
+if(B.design)$('#dsg').innerHTML=`<div class="design">${blouseSVG(B.design)}<div><b>Your Design Studio blouse</b><br><small style="color:var(--mute)">${B.design.label||''}</small><br><small style="color:var(--gold);font-weight:700">Est. ${rs(B.design.price||0)}</small></div></div>`;
+let view=new Date();view.setDate(1);if(B.date)view=new Date(B.date.getFullYear(),B.date.getMonth(),1);
+const today=new Date();today.setHours(0,0,0,0);const maxD=new Date(today);maxD.setDate(maxD.getDate()+60);
+function cal(){const y=view.getFullYear(),m=view.getMonth();$('#ml').textContent=view.toLocaleDateString('en-IN',{month:'long',year:'numeric'});
+ $('#pm').disabled=y==today.getFullYear()&&m==today.getMonth();$('#nm').disabled=new Date(y,m+1,1)>maxD;
+ const first=(new Date(y,m,1).getDay()+6)%7,n=new Date(y,m+1,0).getDate();let h=['Mo','Tu','We','Th','Fr','Sa','Su'].map(d=>`<div class="h">${d}</div>`).join('')+'<div></div>'.repeat(first);
+ for(let d=1;d<=n;d++){const dt=new Date(y,m,d),free=dt>=today&&dt<=maxD&&isOpen(dt)?slotsFor(dt).filter(s=>s.ok).length:0;
+  h+=`<button data-d="${dkey(dt)}" ${free?'':'disabled'} class="${+dt==+today?'today':''} ${B.date&&+dt==+B.date?'on':''}">${d}${free&&free<=3?'<span class="fe">FEW</span>':''}</button>`}
+ $('#dg').innerHTML=h}
+function times(){if(!B.date)return;$('#tdate').textContent=B.date.toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long'});const S=slotsFor(B.date);
+ const g=(l,f)=>`<div class="tgrp">${l}</div><div class="times">${S.filter(f).map(s=>`<button data-t="${s.t}" ${s.ok?'':'disabled'} class="${B.time==s.t?'on':''}">${t12(s.t)}</button>`).join('')}</div>`;
+ $('#times').innerHTML=g('Morning',s=>+s.t.split(':')[0]<13)+g('Afternoon',s=>{const h=+s.t.split(':')[0];return h>=13&&h<17})+g('Evening',s=>+s.t.split(':')[0]>=17)}
+const svc=()=>SERVICES.find(s=>s.id==B.svc);
+function sum(){const s=svc(),home=$('input[name=v]:checked').value=='home';
+ $('#sum').innerHTML=`<div class="eyebrow" style="color:var(--gold2)">Your appointment</div><h3 style="margin-top:8px">Vipra's Boutique</h3><dl>
+ <div><dt>Service</dt><dd class="${s?'':'e'}">${s?s.n:'Choose a service'}</dd></div>
+ <div><dt>Date</dt><dd class="${B.date?'':'e'}">${B.date?B.date.toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long'}):'Pick a day'}</dd></div>
+ <div><dt>Time</dt><dd class="${B.time?'':'e'}">${B.time?t12(B.time)+(s?' · '+s.m+' min':''):'Pick a time'}</dd></div>
+ <div><dt>Where</dt><dd>${home?'Home visit (+₹100)':'Kothrud studio'}</dd></div>
+ ${s&&s.p?`<div><dt>Stitching from</dt><dd>${rs(s.p)}</dd></div>`:''}</dl>
+ <p class="fine">Consultation is free. You pay only when you place the stitching order. Reschedule or cancel anytime from Track.</p>`}
+function go(n){if(n>=1&&!B.svc)return toast('Choose a service first');if(n>=2&&!B.date)return toast('Pick a date first');if(n>=3&&!B.time)return toast('Pick a time first');
+ B.step=n;$$('.pane').forEach(p=>p.classList.toggle('on',+p.dataset.p==n));$$('#steps button').forEach((b,i)=>{b.classList.toggle('on',i==n);b.classList.toggle('done',i<n)});
+ $('#back').style.visibility=n?'visible':'hidden';$('#next').textContent=n==3?'Confirm booking ✓':'Continue →';$('#navb').style.display=n==4?'none':'flex';$('#steps').style.display=n==4?'none':'flex';
+ if(n==1)cal();if(n==2)times();sum();if(window.gsap)gsap.from(`.pane[data-p="${n}"] > *`,{y:30,opacity:0,stagger:.06,duration:.7,ease:'expo.out'});
+ if(lenis&&scrollY>$('#flow').offsetTop)lenis.scrollTo('#flow',{offset:-100})}
+function ics(a){const pad=n=>String(n).padStart(2,'0'),[y,m,d]=a.date.split('-'),[hh,mm]=a.time.split(':').map(Number),dur=SERVICES.find(s=>s.id==a.svc).m,e=new Date(y,m-1,d,hh,mm+dur);
+ const f=(Y,M,D,H,Mi)=>`${Y}${pad(M)}${pad(D)}T${pad(H)}${pad(Mi)}00`;
+ const txt=`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Vipras Boutique//EN\r\nBEGIN:VEVENT\r\nUID:${a.id}@viprasboutique\r\nDTSTAMP:${f(y,m,d,hh,mm)}\r\nDTSTART:${f(y,m,d,hh,mm)}\r\nDTEND:${f(e.getFullYear(),e.getMonth()+1,e.getDate(),e.getHours(),e.getMinutes())}\r\nSUMMARY:${a.sn} · Vipra's Boutique\r\nLOCATION:Bageshree Co-op Soc, Dahanukar Colony, Kothrud, Pune 411038\r\nDESCRIPTION:Booking ${a.id}. Call ${PHONE}\r\nEND:VEVENT\r\nEND:VCALENDAR`;
+ return URL.createObjectURL(new Blob([txt],{type:'text/calendar'}))}
+function confirm(){const f=new FormData($('#df'));if(!$('#df').reportValidity())return;const home=$('input[name=v]:checked').value=='home';if(home&&!f.get('a').trim())return toast('Please add the address for the home visit');
+ const m={};if($('#mt').checked){$$('#meas input').forEach(i=>{if(i.value)m[i.dataset.k]=i.value});LS.s('vb_meas',{...prof,...m})}
+ const s=svc(),id='VA-'+(1000+Math.floor(Math.random()*8999));
+ const a={id,svc:s.id,sn:s.n,date:dkey(B.date),time:B.time,home,n:f.get('n'),p:f.get('p'),a:f.get('a'),msg:f.get('m'),design:B.design,status:'confirmed',t:Date.now()};
+ const all=LS.g('vb_appts',{});all[id]=a;LS.s('vb_appts',all);
+ const wa=`*Appointment ${id}*\n${s.n}\n${fmtD(B.date)} at ${t12(B.time)}\n${home?'Home visit: '+a.a:'At Kothrud studio'}\nName: ${a.n}\nPhone: ${a.p}${a.msg?'\nNotes: '+a.msg:''}${B.design?'\nDesign: '+B.design.label+' (est. '+rs(B.design.price)+')':''}${Object.keys(m).length?'\nMeasurements: '+Object.entries(m).map(([k,v])=>k+' '+v).join(', '):''}`;
+ $('#ok').innerHTML=`<div class="seal">✓</div><h2>You're <em>booked!</em></h2><p style="color:var(--mute)">${s.n} · ${B.date.toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long'})} at ${t12(B.time)}</p><div class="id">${id}</div><div class="acts"><a class="btn btn-dark" target="_blank" rel="noopener" href="https://wa.me/${WA}?text=${encodeURIComponent(wa)}">Confirm on WhatsApp</a><a class="btn btn-line" href="${ics(a)}" download="vipras-${id}.ics">Add to calendar</a><a class="btn btn-line" href="track.html?id=${id}">Manage booking</a></div>`;
+ go(4);mine();if(window.gsap){gsap.from('.ok .seal',{scale:0,rotate:-120,duration:1,ease:'back.out(1.8)'});gsap.from('.ok .id',{scale:.6,opacity:0,duration:.8,delay:.3,ease:'back.out(2)'})}}
+function mine(){const L=Object.values(LS.g('vb_appts',{})).sort((a,b)=>a.date.localeCompare(b.date)||a.time.localeCompare(b.time));if(!L.length){$('#mine').innerHTML='';return}
+ $('#mine').innerHTML=`<h3 class="serif" style="font-size:32px;font-weight:400;color:var(--maroon);margin-bottom:8px">My appointments</h3>`+L.map(a=>{const [y,m,d]=a.date.split('-').map(Number),dt=new Date(y,m-1,d);return `<div class="ap ${a.status=='cancelled'?'cx':''}"><div class="dt"><div><b>${d}</b><small>${dt.toLocaleDateString('en-IN',{month:'short'})}</small></div></div><div><h5>${a.sn} · ${t12(a.time)}</h5><small>${a.id} · ${a.home?'Home visit':'Studio'} · ${a.status}</small></div>${a.status=='cancelled'?'':`<button class="link" data-cx="${a.id}">Cancel</button>`}</div>`}).join('')}
+document.addEventListener('click',e=>{const t=e.target.closest('[data-s].svc,[data-d],[data-t],[data-go],#next,#back,#pm,#nm,[data-cx]');if(!t)return;const d=t.dataset;
+ if(t.classList.contains('svc')){B.svc=d.s;$$('.svc').forEach(b=>b.classList.toggle('on',b==t));sum();setTimeout(()=>go(1),250)}
+ else if(d.d){const [y,m,dd]=d.d.split('-').map(Number);B.date=new Date(y,m-1,dd);B.time=null;cal();sum();setTimeout(()=>go(2),250)}
+ else if(d.t){B.time=d.t;times();sum();setTimeout(()=>go(3),250)}
+ else if(d.go)go(+d.go);
+ else if(t.id=='next')B.step==3?confirm():go(B.step+1);
+ else if(t.id=='back')go(B.step-1);
+ else if(t.id=='pm'){view.setMonth(view.getMonth()-1);cal()}
+ else if(t.id=='nm'){view.setMonth(view.getMonth()+1);cal()}
+ else if(d.cx){const all=LS.g('vb_appts',{});all[d.cx].status='cancelled';LS.s('vb_appts',all);mine();toast('Appointment '+d.cx+' cancelled')}});
+document.addEventListener('change',e=>{if(e.target.name=='v'){$('#addr').style.display=e.target.value=='home'?'':'none';sum()}if(e.target.id=='mt')$('#meas').classList.toggle('on',e.target.checked)});
+if(B.svc)$$('.svc').forEach(b=>b.classList.toggle('on',b.dataset.s==B.svc));
+mine();go(B.time&&B.date?3:B.svc?1:0);
+initMotion();
+</script>
+</body>
+</html>
